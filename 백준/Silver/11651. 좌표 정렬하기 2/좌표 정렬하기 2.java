@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
         int n = Integer.parseInt(br.readLine());
         int[][] arr = new int[n][2];
         StringTokenizer st;
@@ -21,10 +21,9 @@ public class Main {
         });
 
         for(int[] c : arr){
-            bw.write(c[0]+" "+c[1]+"\n");
+            sb.append(c[0]).append(" ").append(c[1]).append("\n");
         }
-        bw.flush();
-        bw.close();
+        System.out.println(sb.toString());
         br.close();
     }
 }
