@@ -6,26 +6,24 @@ import java.util.Stack;
 public class Main {
     static int n;
     static int max = 0;
-    static int[] nums;
+    static int before, now;
     static long count = 0;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         n = Integer.parseInt(br.readLine());
-        nums = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            nums[i] = Integer.parseInt(br.readLine());
-            max = Math.max(max, nums[i]);
-        }
-
+        before = Integer.parseInt(br.readLine());
+        max = before;
         for (int i = 1; i < n; i++) {
-            if (nums[i-1] <= nums[i]) {
-                count += nums[i] - nums[i-1];
+            now = Integer.parseInt(br.readLine());
+            if (before < now) {
+                count += now - before;
             }
+            max = Math.max(max, now);
+            before = now;
         }
-        count += max - nums[n-1];
+        count += max - now;
 
         System.out.println(count);
 
