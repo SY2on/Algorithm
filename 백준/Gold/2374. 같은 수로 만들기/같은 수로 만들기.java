@@ -15,22 +15,18 @@ public class Main {
 
         n = Integer.parseInt(br.readLine());
         nums = new int[n];
+
         for (int i = 0; i < n; i++) {
             nums[i] = Integer.parseInt(br.readLine());
             max = Math.max(max, nums[i]);
         }
 
-        for (int i = 0; i < n; i++) {
-            if(stack.isEmpty()) {
-
-            }else if(stack.peek() <= nums[i]) {
-                count += nums[i]-stack.pop();
-            }else{
-                stack.pop();
+        for (int i = 1; i < n; i++) {
+            if (nums[i-1] <= nums[i]) {
+                count += nums[i] - nums[i-1];
             }
-            stack.push(nums[i]);
         }
-            count+= max-stack.pop();
+        count += max - nums[n-1];
 
         System.out.println(count);
 
